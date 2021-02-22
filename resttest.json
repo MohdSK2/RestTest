@@ -7,7 +7,7 @@
 	},
 	"host": "de-h-sapq40.corp.dehngroup.com:44300",
 	"schemes": [
-		"https"
+		"http"
 	],
 	"paths": {
 		"/sap/zrest/rest-api": {
@@ -152,20 +152,18 @@
 								"MT_TABLES": null
 							}
 						}
-					},
-					"default": {
-						"description": "Unexpected error (detail included)",
-						"schema": {
-							"type": "string"
-						}
 					}
-				}
+				},
+				"security": [
+					{
+						"SAP User": []
+					}
+				]
 			}
 		}
 	},
 	"definitions": {
 		"ItTimedata": {
-		  "type":"object",
 			"description": "Model for ItTimedata",
 			"required": [
 				"ALLDF"
@@ -206,7 +204,6 @@
 			}
 		},
 		"Payload": {
-		  "type":"object",
 			"description": "Model for Payload",
 			"required": [
 				"IT_TIMEDATA",
@@ -227,7 +224,6 @@
 			}
 		},
 		"Zrest": {
-		  "type":"object",
 			"description": "Model for Zrest",
 			"required": [
 				"MT_EXPORT"
@@ -265,7 +261,6 @@
 			}
 		},
 		"MtInterface": {
-		  "type":"object",
 			"description": "Model for MtInterface",
 			"required": [
 				"CLASS"
@@ -351,7 +346,6 @@
 			}
 		},
 		"MtExport": {
-		  "type":"object",
 			"description": "Model for MtExport",
 			"required": [
 				"ET_MESSAGES"
@@ -367,7 +361,6 @@
 			}
 		},
 		"EtMessages": {
-		  "type":"object",
 			"description": "Model for EtMessages",
 			"required": [
 				"FIELD"
@@ -434,5 +427,18 @@
 				}
 			}
 		}
-	}
+	},
+	"securityDefinitions": {
+		"SAP User": {
+			"description": "Default Authentication",
+			"type": "basic"
+		}
+	},
+	"security": [],
+	"tags": [
+		{
+			"name": "Sap",
+			"description": "Operations about Sap"
+		}
+	]
 }
