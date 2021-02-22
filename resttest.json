@@ -57,103 +57,14 @@
 						"description": "OK",
 						"schema": {
 							"$ref": "#/definitions/Zrest"
-						},
-						"examples": {
-							"application/json": {
-								"MT_EXPORT": [
-									{
-										"ET_MESSAGES": [
-											{
-												"TYPE": "S",
-												"ID": "ZHCM_SELFSERVICE",
-												"NUMBER": 4,
-												"MESSAGE": "Datensätze wurden erfolgreich verarbeitet",
-												"LOG_NO": "",
-												"LOG_MSG_NO": 0,
-												"MESSAGE_V1": "",
-												"MESSAGE_V2": "",
-												"MESSAGE_V3": "",
-												"MESSAGE_V4": "",
-												"PARAMETER": "",
-												"ROW": 0,
-												"FIELD": "",
-												"SYSTEM": ""
-											}
-										]
-									}
-								],
-								"MT_IMPORT": null,
-								"MT_INTERFACE": [
-									{
-										"FUNCNAME": "ZHCM_MAINTAIN_TIMEDATA",
-										"R3STATE": "A",
-										"PARAMETER": "ET_MESSAGES",
-										"PARAMTYPE": "E",
-										"STRUCTURE": "BAPIRET2_T",
-										"DEFAULTVAL": "",
-										"REFERENCE": "",
-										"PPOSITION": 1,
-										"OPTIONAL": "",
-										"TYPE": "X",
-										"CLASS": "",
-										"REF_CLASS": "",
-										"LINE_OF": "",
-										"TABLE_OF": "",
-										"RESFLAG1": "",
-										"RESFLAG2": "",
-										"RESFLAG3": "",
-										"RESFLAG4": "",
-										"RESFLAG5": ""
-									},
-									{
-										"FUNCNAME": "ZHCM_MAINTAIN_TIMEDATA",
-										"R3STATE": "A",
-										"PARAMETER": "IT_TIMEDATA",
-										"PARAMTYPE": "I",
-										"STRUCTURE": "ZTT_MAINTAIN_TIMEDATA",
-										"DEFAULTVAL": "",
-										"REFERENCE": "",
-										"PPOSITION": 2,
-										"OPTIONAL": "",
-										"TYPE": "X",
-										"CLASS": "",
-										"REF_CLASS": "",
-										"LINE_OF": "",
-										"TABLE_OF": "",
-										"RESFLAG1": "",
-										"RESFLAG2": "",
-										"RESFLAG3": "",
-										"RESFLAG4": "",
-										"RESFLAG5": ""
-									},
-									{
-										"FUNCNAME": "ZHCM_MAINTAIN_TIMEDATA",
-										"R3STATE": "A",
-										"PARAMETER": "IV_PERNR",
-										"PARAMTYPE": "I",
-										"STRUCTURE": "PERNR_D",
-										"DEFAULTVAL": "",
-										"REFERENCE": "",
-										"PPOSITION": 1,
-										"OPTIONAL": "",
-										"TYPE": "X",
-										"CLASS": "",
-										"REF_CLASS": "",
-										"LINE_OF": "",
-										"TABLE_OF": "",
-										"RESFLAG1": "",
-										"RESFLAG2": "",
-										"RESFLAG3": "",
-										"RESFLAG4": "",
-										"RESFLAG5": ""
-									}
-								],
-								"MT_MESSAGES": [],
-								"MT_TABLES": null
-							}
 						}
-					}
 				},
+				 "default": {
+						"description": "default",
+						"schema": {
+							"$ref": "#/definitions/Zrest"
+						}
+					},
 				"security": [
 					{
 						"SAP User": []
@@ -225,6 +136,7 @@
 		},
 		"Zrest": {
 			"description": "Model for Zrest",
+			"type":"object",
 			"required": [
 				"MT_EXPORT"
 			],
@@ -347,6 +259,7 @@
 		},
 		"MtExport": {
 			"description": "Model for MtExport",
+			"type":"object",
 			"required": [
 				"ET_MESSAGES"
 			],
@@ -362,6 +275,7 @@
 		},
 		"EtMessages": {
 			"description": "Model for EtMessages",
+			"type":"object",
 			"required": [
 				"FIELD"
 			],
