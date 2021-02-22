@@ -7,7 +7,7 @@
 	},
 	"host": "de-h-sapq40.corp.dehngroup.com:44300",
 	"schemes": [
-		"http"
+		"https"
 	],
 	"paths": {
 		"/sap/zrest/rest-api": {
@@ -151,6 +151,12 @@
 								"MT_MESSAGES": [],
 								"MT_TABLES": null
 							}
+						}
+					},
+					"500": {
+						"description": "failed",
+						"schema": {	
+						    "$ref": "#/definitions/Error"
 						}
 					}
 				},
@@ -424,6 +430,15 @@
 				"TYPE": {
 					"type": "string",
 					"x-example": "S"
+				}
+			}
+		},
+		"Error": {
+			"description": "Error",
+			"properties": {
+				"ErrorMessage": {
+					"type": "string",
+					"x-example": "this is custom error"
 				}
 			}
 		}
