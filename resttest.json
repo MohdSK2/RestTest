@@ -159,12 +159,7 @@
 							"type": "string"
 						}
 					}
-				},
-				"security": [
-					{
-						"SAP User": []
-					}
-				]
+				}
 			}
 		}
 	},
