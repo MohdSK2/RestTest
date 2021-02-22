@@ -428,18 +428,5 @@
 				}
 			}
 		}
-	},
-	"securityDefinitions": {
-		"SAP User": {
-			"description": "Default Authentication",
-			"type": "basic"
-		}
-	},
-	"security": [],
-	"tags": [
-		{
-			"name": "Sap",
-			"description": "Operations about Sap"
-		}
-	]
+	}
 }
