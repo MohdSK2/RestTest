@@ -1,0 +1,444 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Dehngroup",
+		"description": "API for de-h-sapq40.corp.dehngroup.com",
+		"version": "0.0.0"
+	},
+	"host": "de-h-sapq40.corp.dehngroup.com:44300",
+	"schemes": [
+		"https"
+	],
+	"paths": {
+		"/sap/zrest/rest-api": {
+			"post": {
+				"tags": [
+					"Sap"
+				],
+				"description": "ZREST Interface for K2 automation",
+				"operationId": "zrest",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "sap-client",
+						"in": "query",
+						"description": "Sap client",
+						"required": true,
+						"default": "100",
+						"type": "string",
+						"x-example": "100"
+					},
+					{
+						"name": "funcname",
+						"in": "query",
+						"description": "Funcname",
+						"required": true,
+						"default": "ZHCM_MAINTAIN_TIMEDATA",
+						"type": "string",
+						"x-example": "ZHCM_MAINTAIN_TIMEDATA"
+					},
+					{
+						"name": "Payload",
+						"in": "body",
+						"description": "Request Information needed for the SAP Logic",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Payload"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Zrest"
+						},
+						"examples": {
+							"application/json": {
+								"MT_EXPORT": [
+									{
+										"ET_MESSAGES": [
+											{
+												"TYPE": "S",
+												"ID": "ZHCM_SELFSERVICE",
+												"NUMBER": 4,
+												"MESSAGE": "Datensätze wurden erfolgreich verarbeitet",
+												"LOG_NO": "",
+												"LOG_MSG_NO": 0,
+												"MESSAGE_V1": "",
+												"MESSAGE_V2": "",
+												"MESSAGE_V3": "",
+												"MESSAGE_V4": "",
+												"PARAMETER": "",
+												"ROW": 0,
+												"FIELD": "",
+												"SYSTEM": ""
+											}
+										]
+									}
+								],
+								"MT_IMPORT": null,
+								"MT_INTERFACE": [
+									{
+										"FUNCNAME": "ZHCM_MAINTAIN_TIMEDATA",
+										"R3STATE": "A",
+										"PARAMETER": "ET_MESSAGES",
+										"PARAMTYPE": "E",
+										"STRUCTURE": "BAPIRET2_T",
+										"DEFAULTVAL": "",
+										"REFERENCE": "",
+										"PPOSITION": 1,
+										"OPTIONAL": "",
+										"TYPE": "X",
+										"CLASS": "",
+										"REF_CLASS": "",
+										"LINE_OF": "",
+										"TABLE_OF": "",
+										"RESFLAG1": "",
+										"RESFLAG2": "",
+										"RESFLAG3": "",
+										"RESFLAG4": "",
+										"RESFLAG5": ""
+									},
+									{
+										"FUNCNAME": "ZHCM_MAINTAIN_TIMEDATA",
+										"R3STATE": "A",
+										"PARAMETER": "IT_TIMEDATA",
+										"PARAMTYPE": "I",
+										"STRUCTURE": "ZTT_MAINTAIN_TIMEDATA",
+										"DEFAULTVAL": "",
+										"REFERENCE": "",
+										"PPOSITION": 2,
+										"OPTIONAL": "",
+										"TYPE": "X",
+										"CLASS": "",
+										"REF_CLASS": "",
+										"LINE_OF": "",
+										"TABLE_OF": "",
+										"RESFLAG1": "",
+										"RESFLAG2": "",
+										"RESFLAG3": "",
+										"RESFLAG4": "",
+										"RESFLAG5": ""
+									},
+									{
+										"FUNCNAME": "ZHCM_MAINTAIN_TIMEDATA",
+										"R3STATE": "A",
+										"PARAMETER": "IV_PERNR",
+										"PARAMTYPE": "I",
+										"STRUCTURE": "PERNR_D",
+										"DEFAULTVAL": "",
+										"REFERENCE": "",
+										"PPOSITION": 1,
+										"OPTIONAL": "",
+										"TYPE": "X",
+										"CLASS": "",
+										"REF_CLASS": "",
+										"LINE_OF": "",
+										"TABLE_OF": "",
+										"RESFLAG1": "",
+										"RESFLAG2": "",
+										"RESFLAG3": "",
+										"RESFLAG4": "",
+										"RESFLAG5": ""
+									}
+								],
+								"MT_MESSAGES": [],
+								"MT_TABLES": null
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"SAP User": []
+					}
+				]
+			}
+		}
+	},
+	"definitions": {
+		"ItTimedata": {
+			"description": "Model for ItTimedata",
+			"required": [
+				"ALLDF"
+			],
+			"properties": {
+				"ALLDF": {
+					"type": "string",
+					"x-example": "X"
+				},
+				"BEGDA": {
+					"type": "string",
+					"x-example": "20210324"
+				},
+				"BEGUZ": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ENDDA": {
+					"type": "string",
+					"x-example": "20210325"
+				},
+				"ENDUZ": {
+					"type": "string",
+					"x-example": ""
+				},
+				"INFTY": {
+					"type": "string",
+					"x-example": "2001"
+				},
+				"OPERA": {
+					"type": "string",
+					"x-example": "INS"
+				},
+				"SUBTY": {
+					"type": "string",
+					"x-example": "0930"
+				}
+			}
+		},
+		"Payload": {
+			"description": "Model for Payload",
+			"required": [
+				"IT_TIMEDATA",
+				"IV_PERNR"
+			],
+			"properties": {
+				"IT_TIMEDATA": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/ItTimedata"
+					},
+					"x-example": "[\r\n  {\r\n    \"OPERA\": \"INS\",\r\n    \"INFTY\": \"2001\",\r\n    \"BEGDA\": \"20210324\",\r\n    \"ENDDA\": \"20210325\",\r\n    \"BEGUZ\": \"\",\r\n    \"ENDUZ\": \"\",\r\n    \"SUBTY\": \"0930\",\r\n    \"ALLDF\": \"X\"\r\n  }\r\n]"
+				},
+				"IV_PERNR": {
+					"type": "string",
+					"x-example": "00040605"
+				}
+			}
+		},
+		"Zrest": {
+			"description": "Model for Zrest",
+			"required": [
+				"MT_EXPORT"
+			],
+			"properties": {
+				"MT_EXPORT": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MtExport"
+					},
+					"x-example": "[\n  {\n    \"ET_MESSAGES\": [\n      {\n        \"TYPE\": \"S\",\n        \"ID\": \"ZHCM_SELFSERVICE\",\n        \"NUMBER\": 4,\n        \"MESSAGE\": \"Datensätze wurden erfolgreich verarbeitet\",\n        \"LOG_NO\": \"\",\n        \"LOG_MSG_NO\": 0,\n        \"MESSAGE_V1\": \"\",\n        \"MESSAGE_V2\": \"\",\n        \"MESSAGE_V3\": \"\",\n        \"MESSAGE_V4\": \"\",\n        \"PARAMETER\": \"\",\n        \"ROW\": 0,\n        \"FIELD\": \"\",\n        \"SYSTEM\": \"\"\n      }\n    ]\n  }\n]"
+				},
+				"MT_IMPORT": {
+					"type": "string",
+					"x-example": ""
+				},
+				"MT_INTERFACE": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MtInterface"
+					},
+					"x-example": "[\n  {\n    \"FUNCNAME\": \"ZHCM_MAINTAIN_TIMEDATA\",\n    \"R3STATE\": \"A\",\n    \"PARAMETER\": \"ET_MESSAGES\",\n    \"PARAMTYPE\": \"E\",\n    \"STRUCTURE\": \"BAPIRET2_T\",\n    \"DEFAULTVAL\": \"\",\n    \"REFERENCE\": \"\",\n    \"PPOSITION\": 1,\n    \"OPTIONAL\": \"\",\n    \"TYPE\": \"X\",\n    \"CLASS\": \"\",\n    \"REF_CLASS\": \"\",\n    \"LINE_OF\": \"\",\n    \"TABLE_OF\": \"\",\n    \"RESFLAG1\": \"\",\n    \"RESFLAG2\": \"\",\n    \"RESFLAG3\": \"\",\n    \"RESFLAG4\": \"\",\n    \"RESFLAG5\": \"\"\n  },\n  {\n    \"FUNCNAME\": \"ZHCM_MAINTAIN_TIMEDATA\",\n    \"R3STATE\": \"A\",\n    \"PARAMETER\": \"IT_TIMEDATA\",\n    \"PARAMTYPE\": \"I\",\n    \"STRUCTURE\": \"ZTT_MAINTAIN_TIMEDATA\",\n    \"DEFAULTVAL\": \"\",\n    \"REFERENCE\": \"\",\n    \"PPOSITION\": 2,\n    \"OPTIONAL\": \"\",\n    \"TYPE\": \"X\",\n    \"CLASS\": \"\",\n    \"REF_CLASS\": \"\",\n    \"LINE_OF\": \"\",\n    \"TABLE_OF\": \"\",\n    \"RESFLAG1\": \"\",\n    \"RESFLAG2\": \"\",\n    \"RESFLAG3\": \"\",\n    \"RESFLAG4\": \"\",\n    \"RESFLAG5\": \"\"\n  },\n  {\n    \"FUNCNAME\": \"ZHCM_MAINTAIN_TIMEDATA\",\n    \"R3STATE\": \"A\",\n    \"PARAMETER\": \"IV_PERNR\",\n    \"PARAMTYPE\": \"I\",\n    \"STRUCTURE\": \"PERNR_D\",\n    \"DEFAULTVAL\": \"\",\n    \"REFERENCE\": \"\",\n    \"PPOSITION\": 1,\n    \"OPTIONAL\": \"\",\n    \"TYPE\": \"X\",\n    \"CLASS\": \"\",\n    \"REF_CLASS\": \"\",\n    \"LINE_OF\": \"\",\n    \"TABLE_OF\": \"\",\n    \"RESFLAG1\": \"\",\n    \"RESFLAG2\": \"\",\n    \"RESFLAG3\": \"\",\n    \"RESFLAG4\": \"\",\n    \"RESFLAG5\": \"\"\n  }\n]"
+				},
+				"MT_MESSAGES": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"x-example": "[]"
+				},
+				"MT_TABLES": {
+					"type": "string",
+					"x-example": ""
+				}
+			}
+		},
+		"MtInterface": {
+			"description": "Model for MtInterface",
+			"required": [
+				"CLASS"
+			],
+			"properties": {
+				"CLASS": {
+					"type": "string",
+					"x-example": ""
+				},
+				"DEFAULTVAL": {
+					"type": "string",
+					"x-example": ""
+				},
+				"FUNCNAME": {
+					"type": "string",
+					"x-example": "ZHCM_MAINTAIN_TIMEDATA"
+				},
+				"LINE_OF": {
+					"type": "string",
+					"x-example": ""
+				},
+				"OPTIONAL": {
+					"type": "string",
+					"x-example": ""
+				},
+				"PARAMETER": {
+					"type": "string",
+					"x-example": "ET_MESSAGES"
+				},
+				"PARAMTYPE": {
+					"type": "string",
+					"x-example": "E"
+				},
+				"PPOSITION": {
+					"type": "integer",
+					"format": "int32",
+					"x-example": "1"
+				},
+				"R3STATE": {
+					"type": "string",
+					"x-example": "A"
+				},
+				"REF_CLASS": {
+					"type": "string",
+					"x-example": ""
+				},
+				"REFERENCE": {
+					"type": "string",
+					"x-example": ""
+				},
+				"RESFLAG1": {
+					"type": "string",
+					"x-example": ""
+				},
+				"RESFLAG2": {
+					"type": "string",
+					"x-example": ""
+				},
+				"RESFLAG3": {
+					"type": "string",
+					"x-example": ""
+				},
+				"RESFLAG4": {
+					"type": "string",
+					"x-example": ""
+				},
+				"RESFLAG5": {
+					"type": "string",
+					"x-example": ""
+				},
+				"STRUCTURE": {
+					"type": "string",
+					"x-example": "BAPIRET2_T"
+				},
+				"TABLE_OF": {
+					"type": "string",
+					"x-example": ""
+				},
+				"TYPE": {
+					"type": "string",
+					"x-example": "X"
+				}
+			}
+		},
+		"MtExport": {
+			"description": "Model for MtExport",
+			"required": [
+				"ET_MESSAGES"
+			],
+			"properties": {
+				"ET_MESSAGES": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/EtMessages"
+					},
+					"x-example": "[\n  {\n    \"TYPE\": \"S\",\n    \"ID\": \"ZHCM_SELFSERVICE\",\n    \"NUMBER\": 4,\n    \"MESSAGE\": \"Datensätze wurden erfolgreich verarbeitet\",\n    \"LOG_NO\": \"\",\n    \"LOG_MSG_NO\": 0,\n    \"MESSAGE_V1\": \"\",\n    \"MESSAGE_V2\": \"\",\n    \"MESSAGE_V3\": \"\",\n    \"MESSAGE_V4\": \"\",\n    \"PARAMETER\": \"\",\n    \"ROW\": 0,\n    \"FIELD\": \"\",\n    \"SYSTEM\": \"\"\n  }\n]"
+				}
+			}
+		},
+		"EtMessages": {
+			"description": "Model for EtMessages",
+			"required": [
+				"FIELD"
+			],
+			"properties": {
+				"FIELD": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ID": {
+					"type": "string",
+					"x-example": "ZHCM_SELFSERVICE"
+				},
+				"LOG_MSG_NO": {
+					"type": "integer",
+					"format": "int32",
+					"x-example": "0"
+				},
+				"LOG_NO": {
+					"type": "string",
+					"x-example": ""
+				},
+				"MESSAGE": {
+					"type": "string",
+					"x-example": "Datensätze wurden erfolgreich verarbeitet"
+				},
+				"MESSAGE_V1": {
+					"type": "string",
+					"x-example": ""
+				},
+				"MESSAGE_V2": {
+					"type": "string",
+					"x-example": ""
+				},
+				"MESSAGE_V3": {
+					"type": "string",
+					"x-example": ""
+				},
+				"MESSAGE_V4": {
+					"type": "string",
+					"x-example": ""
+				},
+				"NUMBER": {
+					"type": "integer",
+					"format": "int32",
+					"x-example": "4"
+				},
+				"PARAMETER": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ROW": {
+					"type": "integer",
+					"format": "int32",
+					"x-example": "0"
+				},
+				"SYSTEM": {
+					"type": "string",
+					"x-example": ""
+				},
+				"TYPE": {
+					"type": "string",
+					"x-example": "S"
+				}
+			}
+		}
+	},
+	"securityDefinitions": {
+		"SAP User": {
+			"description": "Default Authentication",
+			"type": "basic"
+		}
+	},
+	"security": [],
+	"tags": [
+		{
+			"name": "Sap",
+			"description": "Operations about Sap"
+		}
+	]
+}
