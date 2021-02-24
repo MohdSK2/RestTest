@@ -28,7 +28,6 @@
 						"name": "sap-client",
 						"in": "query",
 						"description": "Sap client",
-						"required": true,
 						"default": "100",
 						"type": "string",
 						"x-example": "100"
@@ -37,7 +36,6 @@
 						"name": "funcname",
 						"in": "query",
 						"description": "Funcname",
-						"required": true,
 						"default": "ZHCM_MAINTAIN_TIMEDATA",
 						"type": "string",
 						"x-example": "ZHCM_MAINTAIN_TIMEDATA"
@@ -46,7 +44,6 @@
 						"name": "Payload",
 						"in": "body",
 						"description": "Request Information needed for the SAP Logic",
-						"required": true,
 						"schema": {
 							"$ref": "#/definitions/Payload"
 						}
